@@ -105,6 +105,7 @@ function startGame() {
          distribute = false
       } else if(startFight) {
          buttonDo.innerText = ""
+         buttonDo.style.display = 'none'
          if (!moveEnemy) {
             textAlert.innerText = "Атакуйте противника!"
             take = false
@@ -113,6 +114,7 @@ function startGame() {
             bid()
             textAlert.innerText = "Отбивайте атаку противника!"
             take = true
+            buttonDo.style.display = 'block'
             buttonDo.innerText = "Взять"
          }
          startFight = false
@@ -149,7 +151,7 @@ function startGame() {
                      moveYou = true
                   }, 1500)
                 } else if (moveYou && isRoundWinner(enemyCardFight, playerCardFight)) {
-                  textAlert.innerText = "Противник отбил вашу аттаку"
+                  textAlert.innerText = "Противник отбил вашу атаку"
                   setTimeout(() => {
                      playerCardFight.remove()
                      enemyCardFight.remove()
@@ -166,8 +168,10 @@ function startGame() {
           } else {
             startFight = true
           }
+          buttonDo.style.display = 'block'
           buttonDo.innerText = 'Продолжить'
           takeEn = false
+          click = true
 
           function isRoundWinner(cardOne, cardTwo) {
             let i = 0, valueOne = '', valueTwo = ''
@@ -277,13 +281,14 @@ function startGame() {
       getCardFromDeck()
       textAlert.innerText = 'Противник взял вашу карту'
       takeEn = true
+      click = true
    }
 
 // ↓ Выборка карты противника и его ход ↓
 function bid() {
    auPutTable.play()
    setTimeout(() => {
-      if (moveEnemy) {
+      if (moveEnemy && !stop) {
          let ran = Math.floor(Math.random() * (enemyCards.length) - 1) + 1
          for (let i = 0; i < enemyCards.length; i++) {
             if(i == ran) {
@@ -334,6 +339,7 @@ function bid() {
                break
             }
          }
+         click = true
          if (!isBid) takeEnemy()
          return enemyCardFight = document.querySelector('.place__enemy .card')
       }
@@ -354,12 +360,14 @@ function updateDeckInformation() {
    if (enemyCards.length === 0 && playerCards.length === 0 && deckSide.numberOfCards === 0) {
       textAlert.innerText = "Ничья!"
       buttonDo.innerText = "Начать заново"
+      buttonDo.style.display = 'block'
       take = false
       stop = true
    } else if (playerCards.length === 0 && deckSide.numberOfCards === 0) {
       textAlert.innerText = "Вы выйграли!"
       textAlert.classList.add('green')
       buttonDo.innerText = "Начать заново"
+      buttonDo.style.display = 'block'
       auWin.play()
       take = false
       stop = true
@@ -367,6 +375,7 @@ function updateDeckInformation() {
       textAlert.innerText = "Вы проиграли!"
       textAlert.classList.add('red')
       buttonDo.innerText = "Начать заново"
+      buttonDo.style.display = 'block'
       auLose.play()
       take = false
       stop = true
