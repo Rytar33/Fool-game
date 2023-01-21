@@ -1,0 +1,145 @@
+body {
+   margin: 0;
+   padding: 0;
+   font-family: Arial, Helvetica, sans-serif;
+   min-height: 100%;
+   min-width: 100%;
+}
+.wrapper {
+   transition: 0.3s;
+}
+/* Бургер меню */
+.burger-menu {
+   display: block;
+}
+/* Кнопка бургер меню */
+.burger-icon {
+   height: 96px;
+   width: 96px;
+   background-color: rgb(201, 57, 57);
+   border: none;
+   cursor: pointer;
+   position: absolute;
+   margin: 0;
+   padding: 0;
+   left: 0;
+   z-index: 10;
+   transition: .2s;
+}
+/* Оформление полосок */
+.burger-icon span {
+   width: 75%;
+   height: 7.5px;
+   position: absolute;
+   background-color: rgb(245, 210, 159);
+   display: block;
+   border-radius: 5px;
+   top: 0;
+   left: 12.5%;
+   transition: .2s;
+}
+
+.burger-icon span:nth-child(1) {
+   top: 25%;
+   transform: translateY(-20%);
+}
+
+.burger-icon span:nth-child(2) {
+   top: 50%;
+   transform: translateY(-50%);
+}
+.burger-icon span:nth-child(3) {
+   bottom: 25%;
+   top: auto;
+}
+
+/* Анимация по центру */
+.burger-icon.is-center span:nth-child(1) {
+   top: 50%;
+   transform: translateY(-50%);
+}
+
+.burger-icon.is-center span:nth-child(2) {
+   opacity: 0;
+   transition: .2s;
+}
+
+.burger-icon.is-center span:nth-child(3) {
+   bottom: 50%;
+   transform: translateY(50%);
+}
+
+/* Анимация добавление крестика */
+.burger-icon.is-active span:nth-child(1) {
+   transform: translateY(-50%) rotate(45deg);
+}
+
+.burger-icon.is-active span:nth-child(3) {
+   transform: translateY(50%) rotate(-45deg);
+}
+.burger-icon.is-active {
+   background-color: green;
+   transition: .5s;
+}
+.burger-icon.is-active span {
+   background-color: greenyellow;
+}
+/* Всплывающее меню */
+.menu {
+   background-color: rgb(205, 76, 76);
+   color: rgb(222, 222, 222);
+   text-transform: uppercase;
+   letter-spacing: 2px;
+   position: fixed;
+   padding: 106px 0 0 0;
+   width: 200px;
+   left: -200px;
+   transition: .2s;
+   min-height: 100%;
+   display: flex;
+}
+.content {
+   flex-direction: column;
+   justify-content: space-between;
+   flex-grow: 1;
+}
+.menu.is-active {
+   left: 0;
+   transition: .2s;
+}
+.wrapper.hidden__wraper {
+   background-color: rgba(0, 0, 0, 0.35);
+   min-width: 100%;
+   min-height: 100%;
+   position: absolute;
+   transition: 0.3s;
+}
+.wrapper.hidden__wraper .game__wrapper {
+   pointer-events: none;
+}
+.burger-icon.is-active {
+   left: 104px;
+   transition: .2s;
+}
+.menu span {
+   display: block;
+   margin: 0;
+   padding: 10px 0 10px 15px;
+   position: relative;
+}
+.menu .upp__content span:hover {
+   cursor: pointer;
+   color: rgb(215, 255, 184);
+}
+.upp__content{
+   font-size: 15px;
+   height: 80%;
+}
+.bottom__content{
+   font-size: 10px;
+}
+.none {
+   overflow: visible;
+   opacity: 0;
+   transition: .2s;
+}
