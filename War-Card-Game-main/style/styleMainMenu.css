@@ -1,0 +1,50 @@
+@import url('./reset.css');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');
+body{
+   font-family: 'Comfortaa', cursive;
+   user-select: none;
+}
+.wrapper {
+   min-height: 100vh;
+   width: 100%;
+   background: linear-gradient(287.11deg, #8CC1FF -24.29%, #F0FFC6 118.13%);
+}
+.menu__content {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   height: 96vh;
+   flex: 1 1 auto
+}
+.menu__content a{
+   font-size: 5em;
+   text-transform: uppercase;
+   text-decoration: none;
+   transition: .2s;
+   margin: 30px 0;
+   color: #000;
+}
+.menu__content a:hover {
+   color: #3388e9;
+}
+.menu__content a:visited {
+   color: #000;
+}
+.menu__content a:visited:hover {
+   color: #3388e9;
+}
+a.exit:hover {
+   color: rgb(234, 49, 49);
+}
+a:visited.exit:hover {
+   color: rgb(234, 49, 49);
+}
+.bottom__uid {
+   position: fixed;
+   font-size: 1.2em;
+   font-weight: 700;
+   left: 94%;
+   top: 97.5%;
+   color: rgb(32, 32, 32);;
+}

@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');
+*{
+   margin: 0;
+   padding: 0;
+   font-family: 'Comfortaa', cursive;
+}
+::selection{background-color: #a8fffc;}
+.wrapper {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   min-height: 100vh;
+   width: 100%;
+   background: linear-gradient(287.11deg, #8CC1FF -24.29%, #F0FFC6 118.13%);
+}
+.form-box {
+   position: relative;
+   width: 400px;
+   height: 450px;
+   background: transparent;
+   border: 2px solid rgba(255, 255, 255, 0.6);
+   border-radius: 20px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+h2{
+   font-size: 2em;
+   color: #fff;
+   text-align: center;
+   user-select: none;
+}
+.input-box {
+   position: relative;
+   margin: 30px 0;
+   width: 310px;
+   border-bottom: 2px solid #fff;
+}
+.input-box label{
+   position: absolute;
+   top: 50%;
+   left: 5px;
+   transform: translateY(-50%);
+   color: #fff;
+   font-size: 1em;
+   pointer-events: none;
+   transition: .5s;
+}
+input:focus ~ label,
+input:valid ~ label{
+   top: -4px;
+}
+.input-box input {
+   width: 100%;
+   height: 50px;
+   background: transparent;
+   border: none;
+   outline: none;
+   font-size: 1em;
+   margin-right: 35px;
+   padding-left: 5px;
+   color: #fff;
+}
+.input-box ion-icon{
+   position: absolute;
+   right: 8px;
+   top: 20px;
+   color: #fff;
+   font-size: 1.2em;
+}
+.remember{
+   margin: -15px 0 15px;
+   font-size: .9em;
+   display: flex;
+   justify-content: center;
+   color: #fff;
+}
+.remember label input{
+   margin-right: 4px;
+}
+
+button {
+   width: 100%;
+   height: 40px;
+   border-radius: 40px;
+   background: #fff;
+   border: none;
+   outline: none;
+   cursor: pointer;
+   font-size: 1em;
+   font-weight: 600;
+   user-select: none;
+   transition: .2s;
+}
+.register {
+   font-size: .9em;
+   color: #fff;
+   text-align: center;
+   margin: 25px 0 10px;
+}
+.register p a{
+   text-decoration: none;
+   color: #fff;
+   font-weight: 700;
+}
+.register p a:hover{
+   text-decoration: underline;
+}
+.forget {
+   margin: 20px 0 0;
+   font-size: .9em;
+   display: flex;
+   justify-content: center;
+   color: #fff;
+}
+.forget a{
+   color: #fff;
+   text-decoration: none;
+   font-weight: 700;
+}
+.forget a:hover {
+   text-decoration: underline;
+}
+/*Далее ниже из сайта код для чек бокса*/
+.radio input {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+	margin: 10px 0 0 7px;
+}
+.radio__text {
+	position: relative;
+	padding: 0 0 0 35px;
+	cursor: pointer;
+}
+.radio__text:before {
+	content: '';
+	position: absolute;
+	top: -3px;
+	left: 0;
+	width: 22px;
+	height: 22px;
+	border: 1px solid #CDD1DA;
+	border-radius: 50%;
+	background: #FFF;
+}
+.radio__text:after {
+	content: '';
+	position: absolute;
+	top: 1px;
+	left: 4px;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	background: #9FD468;
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.5);
+	opacity: 0;
+	transition: .2s;
+}
+.radio input:checked + .radio__text:after {
+	opacity: 1;
+}
+.radio input:focus + .radio__text:before {
+	box-shadow: 0 0 0 3px rgba(255,255,0,.7);
+}
