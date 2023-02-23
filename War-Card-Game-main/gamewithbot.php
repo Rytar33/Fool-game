@@ -1,6 +1,8 @@
 <?php
    try {
-      require 'db.php';
+      $connect = new PDO("mysql:host=localhost;port=3306;dbname=db users", "mysql", "mysql");
+      $sql = "UPDATE statisticswithbot SET quantityWin = quantityWin + 1, quantityGame = quantityGame + 1 WHERE id = $_COOKIE['id']";
+      $result = $connect->query($sql);
    } catch (PDOException $error) {
       echo "Connect into database error: " . $error->getMessage();
    }

@@ -18,7 +18,7 @@ body{
    flex: 1 1 auto
 }
 .menu__content a{
-   font-size: 5em;
+   font-size: 4.5em;
    text-transform: uppercase;
    text-decoration: none;
    transition: .2s;
@@ -46,5 +46,5 @@ a:visited.exit:hover {
    font-weight: 700;
    left: 94%;
    top: 97.5%;
-   color: rgb(32, 32, 32);;
+   color: rgb(32, 32, 32);
 }
