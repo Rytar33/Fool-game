@@ -360,6 +360,9 @@ function updateDeckInformation() {
    if (enemyCards.length === 0 && playerCards.length === 0 && deckSide.numberOfCards === 0) {
       textAlert.innerText = "Ничья!"
       buttonDo.innerText = "Начать заново"
+      buttonDo.innerHTML += '<form action="" method="post">' 
+      +'<button type="submit" name="drawbtn">Начать заново</button>'
+      +'</form>'
       buttonDo.style.display = 'block'
       take = false
       stop = true
@@ -367,6 +370,9 @@ function updateDeckInformation() {
       textAlert.innerText = "Вы выйграли!"
       textAlert.classList.add('green')
       buttonDo.innerText = "Начать заново"
+      buttonDo.innerHTML += '<form action="" method="post">' 
+      +'<button type="submit" name="winbtn">Начать заново</button>'
+      +'</form>'
       buttonDo.style.display = 'block'
       auWin.play()
       take = false
@@ -375,6 +381,9 @@ function updateDeckInformation() {
       textAlert.innerText = "Вы проиграли!"
       textAlert.classList.add('red')
       buttonDo.innerText = "Начать заново"
+      buttonDo.innerHTML += '<form action="" method="post">' 
+      +'<button type="submit" name="losebtn"></button>'
+      +'</form>'
       buttonDo.style.display = 'block'
       auLose.play()
       take = false
