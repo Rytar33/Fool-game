@@ -1,15 +1,17 @@
 <?php
    try {
-      $connect = new PDO("mysql:host=localhost;port=3300;dbname=db users", "mysql", "mysql");
+      $connect = new PDO("mysql:host=localhost;port=3306;dbname=db users", "mysql", "mysql");
       $game = '';
       if(isset($_POST["losebtn"])) $game = 'quantityLose';
-      if(isset($_POST["drawbtn"])) $game = 'quantityWin';
-      if(isset($_POST["winbtn"])) $game = 'quantityDraw';
-      if(count($game) != 0) {
-         $sql = "UPDATE statisticswithbot SET $game = $game + 1, quantityGame = quantityGame + 1 WHERE id = $_COOKIE['id']";
+      if(isset($_POST["drawbtn"])) $game = 'quantityDraw';
+      if(isset($_POST["winbtn"])) $game = 'quantityWin';
+      if(isset($_POST["winbtn"]) or isset($_POST["drawbtn"]) or isset($_POST["losebtn"])) {
+         $id = $_COOKIE['id'];
+         $sql = 'UPDATE statisticswithbot SET '. $game .' = '. $game .' + 1, quantityGame = quantityGame + 1 WHERE id = '.$id.'';
          $result = $connect->prepare($sql);
-         #$result->bindValue(:);
-         $result->execute();  
+         if($result->execute([':game' => $game, ':id' => $id])){
+            header("Location: gamewithbot.php");
+         }
       }
    } catch (PDOException $error) {
       echo "Connect into database error: " . $error->getMessage();

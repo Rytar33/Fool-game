@@ -6,14 +6,36 @@
    $password = "";
    try {
       include_once "db.php";
-      if(isset($_GET["username"])) $username = $_GET["username"];
-      if(isset($_GET["pass"])) $password = $_GET["pass"];
-      while($row = $result->fetch()){
-         if(($row["name"] == $username) and ($row["password"] == $password)) {
-            setcookie('name', $username, time() + (86400 * 7), "localhost/War-Card-Game-main");
-            setcookie('id', $row["id"], time() + (86400 * 7));
-            echo '<script type="text/javascript">location.replace("./mainmenu.php");</script>';
-            exit;
+      if(isset($_GET["username"]) and isset($_GET["pass"])) {
+         $username = $_GET["username"];
+         $password = $_GET["pass"];
+         while($row = $result->fetch()){
+            if(($row["name"] == $username) and ($row["password"] == $password)) {
+               setcookie('name', $username, time() + (86400 * 7), "localhost/War-Card-Game-main");
+               setcookie('id', $row["id"], time() + (86400 * 7));
+               echo '<script type="text/javascript">location.replace("./mainmenu.php");</script>';
+               exit;
+            }
+         }
+      }
+      if(isset($_POST["username"]) and isset($_POST["email"]) and isset($_POST["pass"]) and isset($_POST["repeatpass"])) {
+         $isaccept = true;
+         if(count($_POST["username"]) <= 2) {
+            $isaccept = false;
+         } else if(count($_POST["username"]) > 13) {
+            $isaccept = false;
+         }
+         if (count($_POST["email"]) > 312) {
+            $isaccept = false;
+         } else if(count($_POST["email"]) < 11) {
+            $isaccept = false;
+         }
+         if (count($_POST["pass"]) < 5) {
+            $isaccept = false;
+            
+         }
+         if ($_POST["pass"] != $_POST["repeatpass"]) {
+            $isaccept = false;
          }
       }
 ?>
@@ -39,6 +61,10 @@
             <form action="" method="get">
                <h2>Вход</h2>
                <div class="input-box">
+                  <div class="check">
+                     <ion-icon name="checkmark-sharp"></ion-icon>
+                     <!-- <ion-icon name="close-sharp"></ion-icon> -->
+                  </div>
                   <ion-icon name="person"></ion-icon>
                   <input type="text" name="username" required>
                   <label for="">Имя</label>
@@ -53,7 +79,7 @@
                </div>
                <button type="submit"><span>Войти</span></button>
                <div class="register">
-                  <p>Нету аккаунта? <a href="#">Зарегестрируйтесь</a></p>
+                  <p>Нету аккаунта? <a href="#registration">Зарегестрируйтесь</a></p>
                </div>
                <div class="forget">
                   <a href="#">Забыли Пароль?</a>
@@ -66,12 +92,12 @@
                   <input type="text" name="username" required>
                   <label for="">Имя</label>
                </div>
-               <div class="input-box">
+               <div class="input-box password">
                   <ion-icon name="mail"></ion-icon>
                   <input type="email" name="email" required>
                   <label for="">Почта</label>
                </div>
-               <div class="input-box">
+               <div class="input-box password">
                   <ion-icon name="lock-closed"></ion-icon>
                   <input type="password" name="pass" required>
                   <label for="">Пароль</label>
@@ -92,6 +118,7 @@
          </div>
       </div>
    </div>
+   <script src="./scripts/login.js"></script>
    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
