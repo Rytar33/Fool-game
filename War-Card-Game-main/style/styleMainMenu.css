@@ -40,6 +40,15 @@ a.exit:hover {
 a:visited.exit:hover {
    color: rgb(234, 49, 49);
 }
+a form input {
+   outline: none;
+   border: none;
+   background: transparent;
+   min-width: 300px;
+   min-height: 50px;
+   position: absolute;
+   top: 70%;
+}
 .bottom__uid {
    position: fixed;
    font-size: 1.2em;
