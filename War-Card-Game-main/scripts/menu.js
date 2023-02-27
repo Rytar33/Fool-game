@@ -13,15 +13,19 @@ burgerButton.addEventListener('click', function(e) {
             burgerButton.classList.add('is-active');
             wrapper.classList.add('hidden__wraper');
             invisible.classList.remove('none');
-        }, 200) 
+            burgerButton.removeAttribute('disabled');
+        }, 200)
+        burgerButton.setAttribute('disabled', ''); 
     } else {
         setTimeout(()=> {
             burgerButton.classList.remove('is-center');
+            burgerButton.removeAttribute('disabled');
         }, 200)
         burgerNav.classList.remove('is-active');
         burgerButton.classList.remove('is-active');
         wrapper.classList.remove('hidden__wraper');
         invisible.classList.add('none');
+        burgerButton.setAttribute('disabled', '');
     }
     active = !active;
 })

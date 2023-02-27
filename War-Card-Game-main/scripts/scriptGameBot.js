@@ -35,21 +35,21 @@ const auTake = new Audio('./audio/take_card.mp3')
 
 function restart() {
    // Работает, но с косяками  в виде дублировании↓
-   let i = 0
-   while(enemyCards.length > i) {
-      enemyCards[i].remove()
-      if(enemyCards.length === 0) {
-         textAlert.classList.remove('green')
-         continue
-      }
-   }
-   while(playerCards.length > i) {
-      playerCards[i].remove()
-      if(playerCards.length === 0) {
-         textAlert.classList.remove('red')
-         continue 
-      }
-   }
+   // let i = 0
+   // while(enemyCards.length > i) {
+   //    enemyCards[i].remove()
+   //    if(enemyCards.length === 0) {
+   //       textAlert.classList.remove('green')
+   //       continue
+   //    }
+   // }
+   // while(playerCards.length > i) {
+   //    playerCards[i].remove()
+   //    if(playerCards.length === 0) {
+   //       textAlert.classList.remove('red')
+   //       continue 
+   //    }
+   // }
    // Работает, но с косяками в виде дублировании↑
    location.reload() // Перезапуск страницы
    startGame()
@@ -125,7 +125,7 @@ function startGame() {
          getCardFromDeck()
          bid()
       } else if(stop) {
-         restart()
+         //restart()
       }
    }
    // ↑ Кнопка клика ↑
@@ -360,8 +360,9 @@ function updateDeckInformation() {
    if (enemyCards.length === 0 && playerCards.length === 0 && deckSide.numberOfCards === 0) {
       textAlert.innerText = "Ничья!"
       buttonDo.innerText = "Начать заново"
-      buttonDo.innerHTML += '<form action="" method="post">' 
-      +'<button type="submit" name="drawbtn">Начать заново</button>'
+      buttonDo.innerHTML += '<form action="" method="POST">' 
+      +'<input type="submit" value="Начать заново">'
+      +'<input type="text" name="drawbtn" value=".">'
       +'</form>'
       buttonDo.style.display = 'block'
       take = false
@@ -370,8 +371,9 @@ function updateDeckInformation() {
       textAlert.innerText = "Вы выйграли!"
       textAlert.classList.add('green')
       buttonDo.innerText = "Начать заново"
-      buttonDo.innerHTML += '<form action="" method="post">' 
-      +'<button type="submit" name="winbtn">Начать заново</button>'
+      buttonDo.innerHTML += '<form action="" method="POST">' 
+      +'<input type="submit" value="Начать заново">'
+      +'<input type="text" name="winbtn" value=".">'
       +'</form>'
       buttonDo.style.display = 'block'
       auWin.play()
@@ -381,8 +383,9 @@ function updateDeckInformation() {
       textAlert.innerText = "Вы проиграли!"
       textAlert.classList.add('red')
       buttonDo.innerText = "Начать заново"
-      buttonDo.innerHTML += '<form action="" method="post">' 
-      +'<button type="submit" name="losebtn"></button>'
+      buttonDo.innerHTML += '<form action="" method="POST">' 
+      +'<input type="submit" value="Начать заново">'
+      +'<input type="text" name="losebtn" value=".">'
       +'</form>'
       buttonDo.style.display = 'block'
       auLose.play()
