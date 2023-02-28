@@ -14,111 +14,86 @@ function isReg () {
    const iconrepass = document.querySelector('.reppassword .pas')
    const inputPass = document.querySelector('.password .inpass')
    const inputRePass = document.querySelector('.reppassword .inrepass')
-   const inputName = document.querySelector('.username input')
+   const inputName = document.getElementById('username')
    const inputMail = document.querySelector('.mail input')
    const inputPassword = document.querySelector('.password input')
    const inputRePassword = document.querySelector('.reppassword input')
    iconpass.onclick = () => {
-      const inputValPass = document.querySelector('.password .inpass input').value
       if(!pressIconPass) {
          iconpass.innerHTML = '<ion-icon name="lock-open-outline" role="img" class="md hydrated" aria-label="lock open"></ion-icon>'
-         inputPass.innerHTML = '<input type="text" name="pass" value="'+ inputValPass +'" required>' + '<label for="">Пароль</label>'
+         inputPassword.setAttribute('type', 'text')
          pressIconPass = true
       } else if (pressIconPass) {
          iconpass.innerHTML = '<ion-icon name="lock-closed" role="img" class="md hydrated" aria-label="lock closed"></ion-icon>'
-         inputPass.innerHTML = '<input type="password" name="pass" value="'+ inputValPass +'" required>' + '<label for="">Пароль</label>'
+         inputPassword.setAttribute('type', 'password')
          pressIconPass = false
       }
    }
    iconrepass.onclick = () => {
-      const inputValRePass = document.querySelector('.reppassword .inrepass input').value
       if(!pressIconRePass) {
          iconrepass.innerHTML = '<ion-icon name="lock-open-outline" role="img" class="md hydrated" aria-label="lock open"></ion-icon>'
-         inputRePass.innerHTML = '<input type="text" name="repeatpass" value="'+ inputValRePass +'" required>' + '<label for="">Повторите пароль</label>'
+         inputRePassword.setAttribute('type', 'text')
          pressIconRePass = true
       } else if (pressIconRePass) {
          iconrepass.innerHTML = '<ion-icon name="lock-closed" role="img" class="md hydrated" aria-label="lock closed"></ion-icon>'
-         inputRePass.innerHTML = '<input type="password" name="repeatpass" value="'+ inputValRePass +'" required>' + '<label for="">Повторите пароль</label>'
+         inputRePassword.setAttribute('type', 'password')
          pressIconRePass = false
       }
    }
-   inputName.onchange = (e) => {
+   inputName.onkeyup = () => {
       const checkName = document.querySelector('.username .check')
-      if(checkName.lenght <= 2){
+      if(inputName.value.length == 0){
+         checkName.innerHTML = null
+      } else if(inputName.value.length <= 2) {
          isCheck('error', checkName)
-         // checkName.innerHTML = '<ion-icon name="close-sharp" role="img" class="md hydrated" aria-label="close sharp"></ion-icon>'
-         // checkName.style.color = 'rgb(255, 0, 0)'
-      } else if (e.target.lenght > 15) {
+      } else if (inputName.value.length > 15) {
          isCheck('error', checkName)
-         // checkName.innerHTML = '<ion-icon name="close-sharp" role="img" class="md hydrated" aria-label="close sharp"></ion-icon>'
-         // checkName.style.color = 'rgb(255, 0, 0)'
-      } else {
+      }else {
          isCheck('check', checkName)
-         // checkName.innerHTML = '<ion-icon name="checkmark-sharp" role="img" class="md hydrated" aria-label="checkmark sharp"></ion-icon>'
-         // checkName.style.color = 'rgb(0, 140, 7)'
       }
    }
-   inputMail.onchange = (e) => {
+   inputMail.onkeyup = () => {
       const checkMail = document.querySelector('.mail .check')
-      if(e.target.value.lenght <= 10){
+      if(inputMail.value.length == 0){
+         checkMail.innerHTML = null
+      } else if(inputMail.value.length <= 13) {
          isCheck('error', checkMail)
-         // checkMail.innerHTML = '<ion-icon name="close-sharp" role="img" class="md hydrated" aria-label="close sharp"></ion-icon>'
-         // checkMail.style.color = 'rgb(255, 0, 0)'
-      } else if (e.target.lenght > 311) {
+      } else if (inputMail.value.length > 311) {
          isCheck('error', checkMail)
-         // checkMail.innerHTML = '<ion-icon name="close-sharp" role="img" class="md hydrated" aria-label="close sharp"></ion-icon>'
-         // checkMail.style.color = 'rgb(255, 0, 0)'
       } else {
          isCheck('check', checkMail)
-         // checkMail.innerHTML = '<ion-icon name="checkmark-sharp" role="img" class="md hydrated" aria-label="checkmark sharp"></ion-icon>'
-         // checkMail.style.color = 'rgb(0, 140, 7)'
       }
    }
-   inputPassword.onchange = (e) => {
+   inputPassword.onkeyup = () => {
       const checkPassword = document.querySelector('.password .check')
-      if(e.target.value.lenght <= 5){
+      if(inputPassword.value.length == 0){
+         checkPassword.innerHTML = null
+      }else if(inputPassword.value.length <= 5){
          isCheck('error', checkPassword)
-         // checkPassword.innerHTML = '<ion-icon name="close-sharp" role="img" class="md hydrated" aria-label="close sharp"></ion-icon>'
-         // checkPassword.style.color = 'rgb(255, 0, 0)'
-      } else if (e.target.lenght > 20) {
+      } else if (inputPassword.value.length > 20) {
          isCheck('error', checkPassword)
-         // checkPassword.innerHTML = '<ion-icon name="close-sharp" role="img" class="md hydrated" aria-label="close sharp"></ion-icon>'
-         // checkPassword.style.color = 'rgb(255, 0, 0)'
       } else {
          isCheck('check', checkPassword)
-         // checkPassword.innerHTML = '<ion-icon name="checkmark-sharp" role="img" class="md hydrated" aria-label="checkmark sharp"></ion-icon>'
-         // checkPassword.style.color = 'rgb(0, 140, 7)'
       }
    }
-   inputRePassword.onchange = (e) => {
+   inputRePassword.onkeyup = () => {
       const checkRePassword = document.querySelector('.reppassword .check')
-      const checkPassword = document.querySelector('.password .check')
-      if(checkPassword !== checkRePassword){
+      if(inputPassword.value !== inputRePassword.value){
          isCheck('error', checkRePassword)
-         // checkRePassword.innerHTML = '<ion-icon name="close-sharp" role="img" class="md hydrated" aria-label="close sharp"></ion-icon>'
-         // checkRePassword.style.color = 'rgb(255, 0, 0)'
+      }else if(inputRePassword.value.length == 0){
+         checkRePassword.innerHTML = null
       } else {
          isCheck('check', checkRePassword)
-         // checkRePassword.innerHTML = '<ion-icon name="checkmark-sharp" role="img" class="md hydrated" aria-label="checkmark sharp"></ion-icon>'
-         // checkRePassword.style.color = 'rgb(0, 140, 7)'
       }
    }
    function isCheck(type, typeInput) {
       if(type === 'error') {
-         typeInput.innerHTML = '<ion-icon name="close-sharp" role="img" class="md hydrated" aria-label="close sharp"></ion-icon>'
-         typeInput.style.color = 'rgb(255, 0, 0)'
+         typeInput.innerHTML = '<ion-icon name="close-sharp" role="img" class="md hydrated" aria-label="close sharp" style="color: rgb(255, 0, 0)"></ion-icon>'
       } else if(type === 'check') {
-         typeInput.innerHTML = '<ion-icon name="checkmark-sharp" role="img" class="md hydrated" aria-label="checkmark sharp"></ion-icon>'
-         typeInput.style.color = 'rgb(0, 140, 7)'
+         typeInput.innerHTML = '<ion-icon name="checkmark-sharp" role="img" class="md hydrated" aria-label="checkmark sharp" style="color: rgb(0, 140, 7)"></ion-icon>'
       }
    }
 }
-
-// inputs.onclick = (e) => {
-//    if(reg) {
-//       if(e.value > 2)
-//    }
-// }
 
 register.addEventListener("click", () => {
    if(login) { // переход на регистрацию
@@ -130,7 +105,7 @@ register.addEventListener("click", () => {
       +'<div class="input-box username">'
       +'<div class="check"></div>'
       +'<ion-icon name="person"></ion-icon>'
-      +'<input type="text" name="username" required>'
+      +'<input type="text" name="username" id="username" required>'
       +'<label for="">Имя</label>'
       +'</div>'
       +'<div class="input-box mail">'
