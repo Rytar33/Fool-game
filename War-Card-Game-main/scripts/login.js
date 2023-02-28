@@ -14,6 +14,10 @@ function isReg () {
    const iconrepass = document.querySelector('.reppassword .pas')
    const inputPass = document.querySelector('.password .inpass')
    const inputRePass = document.querySelector('.reppassword .inrepass')
+   const inputName = document.querySelector('.username input')
+   const inputMail = document.querySelector('.mail input')
+   const inputPassword = document.querySelector('.password input')
+   const inputRePassword = document.querySelector('.reppassword input')
    iconpass.onclick = () => {
       const inputValPass = document.querySelector('.password .inpass input').value
       if(!pressIconPass) {
@@ -38,6 +42,76 @@ function isReg () {
          pressIconRePass = false
       }
    }
+   inputName.onchange = (e) => {
+      const checkName = document.querySelector('.username .check')
+      if(checkName.lenght <= 2){
+         isCheck('error', checkName)
+         // checkName.innerHTML = '<ion-icon name="close-sharp" role="img" class="md hydrated" aria-label="close sharp"></ion-icon>'
+         // checkName.style.color = 'rgb(255, 0, 0)'
+      } else if (e.target.lenght > 15) {
+         isCheck('error', checkName)
+         // checkName.innerHTML = '<ion-icon name="close-sharp" role="img" class="md hydrated" aria-label="close sharp"></ion-icon>'
+         // checkName.style.color = 'rgb(255, 0, 0)'
+      } else {
+         isCheck('check', checkName)
+         // checkName.innerHTML = '<ion-icon name="checkmark-sharp" role="img" class="md hydrated" aria-label="checkmark sharp"></ion-icon>'
+         // checkName.style.color = 'rgb(0, 140, 7)'
+      }
+   }
+   inputMail.onchange = (e) => {
+      const checkMail = document.querySelector('.mail .check')
+      if(e.target.value.lenght <= 10){
+         isCheck('error', checkMail)
+         // checkMail.innerHTML = '<ion-icon name="close-sharp" role="img" class="md hydrated" aria-label="close sharp"></ion-icon>'
+         // checkMail.style.color = 'rgb(255, 0, 0)'
+      } else if (e.target.lenght > 311) {
+         isCheck('error', checkMail)
+         // checkMail.innerHTML = '<ion-icon name="close-sharp" role="img" class="md hydrated" aria-label="close sharp"></ion-icon>'
+         // checkMail.style.color = 'rgb(255, 0, 0)'
+      } else {
+         isCheck('check', checkMail)
+         // checkMail.innerHTML = '<ion-icon name="checkmark-sharp" role="img" class="md hydrated" aria-label="checkmark sharp"></ion-icon>'
+         // checkMail.style.color = 'rgb(0, 140, 7)'
+      }
+   }
+   inputPassword.onchange = (e) => {
+      const checkPassword = document.querySelector('.password .check')
+      if(e.target.value.lenght <= 5){
+         isCheck('error', checkPassword)
+         // checkPassword.innerHTML = '<ion-icon name="close-sharp" role="img" class="md hydrated" aria-label="close sharp"></ion-icon>'
+         // checkPassword.style.color = 'rgb(255, 0, 0)'
+      } else if (e.target.lenght > 20) {
+         isCheck('error', checkPassword)
+         // checkPassword.innerHTML = '<ion-icon name="close-sharp" role="img" class="md hydrated" aria-label="close sharp"></ion-icon>'
+         // checkPassword.style.color = 'rgb(255, 0, 0)'
+      } else {
+         isCheck('check', checkPassword)
+         // checkPassword.innerHTML = '<ion-icon name="checkmark-sharp" role="img" class="md hydrated" aria-label="checkmark sharp"></ion-icon>'
+         // checkPassword.style.color = 'rgb(0, 140, 7)'
+      }
+   }
+   inputRePassword.onchange = (e) => {
+      const checkRePassword = document.querySelector('.reppassword .check')
+      const checkPassword = document.querySelector('.password .check')
+      if(checkPassword !== checkRePassword){
+         isCheck('error', checkRePassword)
+         // checkRePassword.innerHTML = '<ion-icon name="close-sharp" role="img" class="md hydrated" aria-label="close sharp"></ion-icon>'
+         // checkRePassword.style.color = 'rgb(255, 0, 0)'
+      } else {
+         isCheck('check', checkRePassword)
+         // checkRePassword.innerHTML = '<ion-icon name="checkmark-sharp" role="img" class="md hydrated" aria-label="checkmark sharp"></ion-icon>'
+         // checkRePassword.style.color = 'rgb(0, 140, 7)'
+      }
+   }
+   function isCheck(type, typeInput) {
+      if(type === 'error') {
+         typeInput.innerHTML = '<ion-icon name="close-sharp" role="img" class="md hydrated" aria-label="close sharp"></ion-icon>'
+         typeInput.style.color = 'rgb(255, 0, 0)'
+      } else if(type === 'check') {
+         typeInput.innerHTML = '<ion-icon name="checkmark-sharp" role="img" class="md hydrated" aria-label="checkmark sharp"></ion-icon>'
+         typeInput.style.color = 'rgb(0, 140, 7)'
+      }
+   }
 }
 
 // inputs.onclick = (e) => {
@@ -53,13 +127,13 @@ register.addEventListener("click", () => {
       formbox.style.height = '600px'
       form.innerHTML = '<form action="" method="post">'
       +'<h2>Регистрация</h2>'
-      +'<div class="input-box">'
+      +'<div class="input-box username">'
       +'<div class="check"></div>'
       +'<ion-icon name="person"></ion-icon>'
       +'<input type="text" name="username" required>'
       +'<label for="">Имя</label>'
       +'</div>'
-      +'<div class="input-box">'
+      +'<div class="input-box mail">'
       +'<div class="check"></div>'
       +'<ion-icon name="mail"></ion-icon>'
       +'<input type="email" name="email" required>'
