@@ -48,11 +48,13 @@ h2{
 }
 input:focus ~ label,
 input:valid ~ label{
-   top: -4px;
+   font-size: .85em;
+   top: -3px;
 }
 .inpass input:focus ~ label,
 .inpass input:valid ~ label{
-   top: -4px;
+   font-size: .85em;
+   top: -3px;
 }
 .input-box input {
    width: 100%;
