@@ -16,7 +16,7 @@
 .form-box {
    position: relative;
    width: 400px;
-   height: 450px;
+   height: 510px;
    background: transparent;
    border: 2px solid rgba(255, 255, 255, 0.6);
    border-radius: 20px;
@@ -32,9 +32,10 @@ h2{
 }
 .input-box {
    position: relative;
-   margin: 30px 0;
+   margin: 45px 0;
    width: 310px;
    border-bottom: 2px solid #fff;
+   transition: .3s;
 }
 .input-box label{
    position: absolute;
@@ -44,7 +45,7 @@ h2{
    color: #fff;
    font-size: 1em;
    pointer-events: none;
-   transition: .5s;
+   transition: .3s;
 }
 input:focus ~ label,
 input:valid ~ label{
@@ -57,7 +58,7 @@ input:valid ~ label{
    top: -3px;
 }
 .input-box input {
-   width: 100%;
+   width: 85%;
    height: 50px;
    background: transparent;
    border: none;
@@ -69,10 +70,10 @@ input:valid ~ label{
 }
 .input-box ion-icon{
    position: absolute;
-   right: 8px;
-   top: 20px;
+   right: 4px;
+   top: 15px;
    color: #fff;
-   font-size: 1.2em;
+   font-size: 1.3em;
 }
 .input-box .check ion-icon {
    right: -30px;
@@ -80,7 +81,14 @@ input:valid ~ label{
    color: rgb(0, 140, 7);
    /* color: rgb(255, 0, 0); */
    font-size: 1.5em;
-   top: 18px;
+   top: 15px;
+}
+.warning {
+   position: absolute;
+   top: 57px;
+   font-size: .8em;
+   left: 3px;
+   color: red;
 }
 .pas ion-icon:hover {
    cursor: pointer;
@@ -115,13 +123,14 @@ button {
    text-align: center;
    margin: 25px 0 10px;
 }
-.register p a{
+.register p span{
    text-decoration: none;
    color: #fff;
    font-weight: 700;
 }
-.register p a:hover{
+.register p span:hover{
    text-decoration: underline;
+   cursor: pointer;
 }
 .forget {
    margin: 20px 0 0;
