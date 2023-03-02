@@ -20,22 +20,24 @@
       }
       if(isset($_POST["username"]) and isset($_POST["email"]) and isset($_POST["pass"]) and isset($_POST["repeatpass"])) {
          $isaccept = true;
-         if(count($_POST["username"]) <= 2) {
-            $isaccept = false;
-         } else if(count($_POST["username"]) > 13) {
+         if(strlen($_POST["username"]) <= 2 or strlen($_POST["username"]) > 15) {
             $isaccept = false;
          }
-         if (count($_POST["email"]) > 312) {
-            $isaccept = false;
-         } else if(count($_POST["email"]) < 11) {
+         if (strlen($_POST["email"]) <= 10 or strlen($_POST["email"]) > 311) {
             $isaccept = false;
          }
-         if (count($_POST["pass"]) < 5) {
+         if (strlen($_POST["pass"]) < 5 or strlen($_POST["pass"]) > 20) {
             $isaccept = false;
-            
          }
          if ($_POST["pass"] != $_POST["repeatpass"]) {
             $isaccept = false;
+         }
+         if($isaccept) {
+            setcookie('name', $_POST["username"], time() + (86400));
+            setcookie('password', $_POST["pass"], time() + (86400));
+            setcookie('email', $_POST["email"], time() + (86400));
+            header('reg-check-final.php');
+            exit;
          }
       }
 ?>
@@ -61,10 +63,7 @@
             <form action="" method="get">
                <h2>Вход</h2>
                <div class="input-box">
-                  <div class="check">
-                     <ion-icon name="checkmark-sharp"></ion-icon>
-                     <!-- <ion-icon name="close-sharp"></ion-icon> -->
-                  </div>
+                  <div class="check"></div>
                   <ion-icon name="person"></ion-icon>
                   <input type="text" name="username" required>
                   <label for="">Имя</label>
@@ -79,7 +78,7 @@
                </div>
                <button type="submit"><span>Войти</span></button>
                <div class="register">
-                  <p>Нету аккаунта? <a href="#registration">Зарегестрируйтесь</a></p>
+                  <p>Нету аккаунта? <span>Зарегестрируйтесь</span></p>
                </div>
                <div class="forget">
                   <a href="#">Забыли Пароль?</a>
