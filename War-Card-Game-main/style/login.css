@@ -36,6 +36,8 @@ h2{
    width: 310px;
    border-bottom: 2px solid #fff;
    transition: .3s;
+   display: flex;
+   align-items: center;
 }
 .input-box label{
    position: absolute;
@@ -99,6 +101,7 @@ input:valid ~ label{
    display: flex;
    justify-content: center;
    color: #fff;
+   max-width: 300px;
 }
 .remember label input{
    margin-right: 4px;
