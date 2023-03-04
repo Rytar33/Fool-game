@@ -10,7 +10,13 @@
       if(mail($to, 'Код подтверждения', "Код: $message", $headers)) {
          echo "Письмо отправленно.";
       }
+      if($_POST['code'] == $message) {
+         include_once "db.php";
+         $sql = 'INSERT INTO user (name, email, password, backgroundCard) VALUES ('. $_COOKIE['name'] .', '. $_COOKIE['email'] .', '. $_COOKIE['password'] .', "pyro")';
+         $result = $connect->query($sql);
+      }
    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

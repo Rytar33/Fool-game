@@ -6,6 +6,8 @@
    $password = "";
    try {
       include_once "db.php";
+      $sql = "SELECT * FROM user";
+      $result = $connect->query($sql);
       if(isset($_GET["username"]) and isset($_GET["pass"])) {
          $username = $_GET["username"];
          $password = $_GET["pass"];
@@ -33,9 +35,12 @@
             $isaccept = false;
          }
          if($isaccept) {
+            $emailUser = htmlspecialchars($_POST['email']);
+            $emailUser = urldecode($emailUser);
+            $emailUser = trim($emailUser);
             setcookie('name', $_POST["username"], time() + (86400));
             setcookie('password', $_POST["pass"], time() + (86400));
-            setcookie('email', $_POST["email"], time() + (86400));
+            setcookie('email', $emailUser, time() + (86400));
             header('reg-check-final.php');
             exit;
          }
