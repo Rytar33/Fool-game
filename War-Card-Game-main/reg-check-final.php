@@ -13,7 +13,22 @@
       if($_POST['code'] == $message) {
          include_once "db.php";
          $sql = 'INSERT INTO user (name, email, password, backgroundCard) VALUES ('. $_COOKIE['name'] .', '. $_COOKIE['email'] .', '. $_COOKIE['password'] .', "pyro")';
+         $result = $connect->execute($sql);
+         setcookie('password', $_COOKIE['password'], time() - (86400));
+         setcookie('email', $_COOKIE['email'], time() - (86400));
+         $sql = "SELECT * FROM user";
          $result = $connect->query($sql);
+         while($row = $result->fetch()) {
+            if($row["name"] == $_COOKIE['name']) {
+               setcookie('id', $row["id"], time() + (86400 * 7));
+               setcookie('name', $_COOKIE["name"], time() + (86400 * 6));
+               break;
+            }
+         }
+         header('mainmenu.php');
+      } else {
+         header('reg-check-final.php');
+         echo "Неверный код! Повторите попытку.";
       }
    }
 
