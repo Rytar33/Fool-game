@@ -217,7 +217,7 @@ body {
 }
 .hidden {
    /* background-color: rgb(151, 41, 41); */
-   background: url('../img/back-side.png');
+   background: url('../img/default.jpg');
    height: 120px;
    width: 80px;
    background-repeat: no-repeat; 
