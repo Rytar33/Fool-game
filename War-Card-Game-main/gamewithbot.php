@@ -1,7 +1,17 @@
 <?php
    try {
-      $connect = new PDO("mysql:host=localhost;port=3306;dbname=db users", "mysql", "mysql");
+      include_once "db.php";
       $game = '';
+      // $sql = "SELECT * FROM user";
+      // $result = $connect->query($sql);
+      // while($row = $result->fetch()){
+      //    if(($row["id"] == $_COOKIE['id'])) {
+      //       $shirtcard = $row['backgroundCard'];
+      //       $urlImg = "./img/".$shirtcard.".jpg";
+      //       echo "<script type='text/javascript'>const hiddenCard = document.getElementsByClassName('hidden').style.background = 'url('".$urlImg."')';</script>";
+      //       break;
+      //    }
+      // }
       if(isset($_POST["losebtn"])) $game = 'quantityLose';
       if(isset($_POST["drawbtn"])) $game = 'quantityDraw';
       if(isset($_POST["winbtn"])) $game = 'quantityWin';
@@ -88,5 +98,22 @@
       </div>
       <div class="bottom__uid">ID: <?php echo $_COOKIE['id'] ?></div>
    </div>
+   <?php
+      include_once "db.php";
+      $sql = "SELECT * FROM user";
+      $result = $connect->query($sql);
+      while($row = $result->fetch()){
+         if(($row["id"] == $_COOKIE['id'])) {
+            $shirtcard = $row['backgroundCard'];
+            $urlImg = "./img/".$shirtcard.".jpg";
+            echo '<script type="text/javascript">const hiddenCard = document.getElementsByClassName("hidden");
+            for (let i = 0; i < hiddenCard.length; i++) {
+               hiddenCard[i].style.backgroundImage = "url('.$urlImg.')";
+            }
+            </script>';
+            break;
+         }
+      }
+      ?>
 </body>
 </html>

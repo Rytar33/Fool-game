@@ -1,8 +1,19 @@
 <?php
-
+    try {
+    include_once "db.php";
+    $id = $_COOKIE['id'];
+    if(isset($_POST['shirtcard'])) {
+        $sql = 'UPDATE user SET backgroundCard = :backgroundCard WHERE id = :id';
+        $result = $connect->prepare($sql);
+        if($result->execute([':backgroundCard' => $_POST['shirtcard'], ':id' => $id])){
+            // header("Location: mainmenu.php");
+            echo '<script type="text/javascript">location.replace("./mainmenu.php");</script>';
+         }
+        // exit;
+    }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,23 +23,36 @@
 <body>
     <div class="wrapper">
         <form action="" method="post">
-            <div class="go__back"><a href="mainmenu.php">Назад</a></div>
+         <?php
+            $sql = "SELECT * FROM user";
+            $result = $connect->query($sql);
+            while($row = $result->fetch()){
+               if(($row["id"] == $id)) {
+         ?>
+            <div class="go__back"><input type="submit" value="Назад"></div>
             <div class="card_default">
-                <input type="radio" name="shirtcard" value="default">
+                <input type="radio" name="shirtcard" value="default" <?php if($row["backgroundCard"] == 'default') echo 'checked' ?>>
                 <label for="">Стандартная</label>
             </div>
             <div class="card_pyro">
-                <input type="radio" name="shirtcard" value="pyro" checked>
+                <input type="radio" name="shirtcard" value="pyro" <?php if($row["backgroundCard"] == 'pyro') echo 'checked' ?>>
                 <label for="">Пиро</label>
             </div>
             <div class="card_anemo">
-                <input type="radio" name="shirtcard" value="anemo">
+                <input type="radio" name="shirtcard" value="anemo" <?php if($row["backgroundCard"] == 'anemo') echo 'checked' ?>>
                 <label for="">Анемо</label>
             </div>
             <div class="card_gydro">
-                <input type="radio" name="shirtcard" value="gydro">
+                <input type="radio" name="shirtcard" value="gydro" <?php if($row["backgroundCard"] == 'gydro') echo 'checked' ?>>
                 <label for="">Гидро</label>
             </div>
+            <?php     
+                }  
+            }
+            } catch (PDOException $error) {
+                echo "Connect into database error: " . $error->getMessage();
+            }      
+            ?>
         </form>
     </div>
 </body>

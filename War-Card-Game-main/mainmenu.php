@@ -23,7 +23,7 @@
    <div class="wrapper">
       <div class="menu__content">
          <a href="gamewithbot.php">Начать игру</a>
-         <a href="settings.php">Настройки</a>
+         <a href="settings.php">Смена рубашки</a>
          <a href="statistics.php">Статистика</a>
          <a class="exit" href="index.php">
             Выйти
