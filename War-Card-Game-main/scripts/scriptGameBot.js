@@ -13,6 +13,7 @@ const CARD_VALUE_MAP = {
    A: 14
 }
 
+
 const trumpCardPlace = document.querySelector(".trump__card")
 let enemyCardFight = document.querySelector('.place__enemy .card')
 const deckElement = document.querySelector(".deck")
@@ -361,8 +362,7 @@ function updateDeckInformation() {
       textAlert.innerText = "Ничья!"
       buttonDo.innerText = "Начать заново"
       buttonDo.innerHTML += '<form action="" method="POST">' 
-      +'<input type="submit" value="Начать заново">'
-      +'<input type="text" name="drawbtn" value=".">'
+      +'<input type="submit" name="drawbtn" value="">'
       +'</form>'
       buttonDo.style.display = 'block'
       take = false
@@ -372,8 +372,7 @@ function updateDeckInformation() {
       textAlert.classList.add('green')
       buttonDo.innerText = "Начать заново"
       buttonDo.innerHTML += '<form action="" method="POST">' 
-      +'<input type="submit" value="Начать заново">'
-      +'<input type="text" name="winbtn" value=".">'
+      +'<input type="submit" name="winbtn" value="">'
       +'</form>'
       buttonDo.style.display = 'block'
       auWin.play()
@@ -384,8 +383,7 @@ function updateDeckInformation() {
       textAlert.classList.add('red')
       buttonDo.innerText = "Начать заново"
       buttonDo.innerHTML += '<form action="" method="POST">' 
-      +'<input type="submit" value="Начать заново">'
-      +'<input type="text" name="losebtn" value=".">'
+      +'<input name="losebtn" type="submit" value="">'
       +'</form>'
       buttonDo.style.display = 'block'
       auLose.play()
