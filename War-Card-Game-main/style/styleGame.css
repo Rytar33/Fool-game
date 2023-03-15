@@ -158,6 +158,10 @@ body {
    display: flex;
    flex-direction: column;
 }
+.deck__content .card.hidden {
+   color: rgb(245, 210, 159);
+   text-shadow: 6px 6px 30px 10px #000000 inset;
+}
 .trump__card {
    position: absolute;
    margin: 0 0 0 -10px;
@@ -217,7 +221,7 @@ body {
 }
 .hidden {
    /* background-color: rgb(151, 41, 41); */
-   background: url('../img/default.jpg');
+   /* background: url('../img/mona.jpg'); */
    height: 120px;
    width: 80px;
    background-repeat: no-repeat; 
