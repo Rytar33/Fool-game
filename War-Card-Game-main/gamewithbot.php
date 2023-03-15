@@ -8,7 +8,7 @@
       //    if(($row["id"] == $_COOKIE['id'])) {
       //       $shirtcard = $row['backgroundCard'];
       //       $urlImg = "./img/".$shirtcard.".jpg";
-      //       echo "<script type='text/javascript'>const hiddenCard = document.getElementsByClassName('hidden').style.background = 'url('".$urlImg."')';</script>";
+      //       echo "<script type='text/javascript'>const hiddenCard = document.getElementsByClassName('hidden').style.backgroundImage = 'url('".$urlImg."')';</script>";
       //       break;
       //    }
       // }
