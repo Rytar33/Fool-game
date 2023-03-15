@@ -1,0 +1,32 @@
+[
+   {
+      "idShirt": 0,
+      "shirt": "default",
+      "url": "img/default.jpg",
+      "isChoise": false
+   },
+   {
+      "idShirt": 1,
+      "shirt": "anemo",
+      "url": "img/anemo.jpg",
+      "isChoise": false
+   },
+   {
+      "idShirt": 2,
+      "shirt": "pyro",
+      "url": "img/pyro.jpg",
+      "isChoise": true
+   },
+   {
+      "idShirt": 3,
+      "shirt": "gydro",
+      "url": "img/gydro.jpg",
+      "isChoise": false
+   },
+   {
+      "idShirt": 4,
+      "shirt": "mona",
+      "url": "img/mona.jpg",
+      "isChoise": false
+   }
+]
