@@ -274,6 +274,22 @@ function startGame() {
       const playerCardFight = document.querySelector('.place__player .card')
       playerCardFight.classList.remove('you__team')
       playerCardFight.classList.add('enemy__team', 'hidden')
+      fetch('status.json')
+      .then( response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then( json => initialize(json) )
+    function initialize(data){
+      for (let i = 0; i < data.length; i++) {
+        if(data[i].isChoise == true) {
+          playerCardFight.style.backgroundImage = "url('"+ data[i].url +"')"
+          break
+        }
+      }
+    }
       if(enemyCardFight !== null) {
          playerCardFight.classList.remove('click')
          computerCardSlot.appendChild(enemyCardFight)
@@ -294,6 +310,8 @@ function bid() {
          for (let i = 0; i < enemyCards.length; i++) {
             if(i == ran) {
                enemyCards[i].classList.remove('hidden')
+               enemyCards[i].style.backgroundImage = 'none'
+               // enemyCards[i].style.background = 'none'
                cardsPlaceEnemy.appendChild(enemyCards[i])
                break
             }
@@ -336,6 +354,7 @@ function bid() {
             if(enemyCards[i].dataset.value == dataVal) {
                isBid = true
                enemyCards[i].classList.remove('hidden')
+               enemyCards[i].style.backgroundImage = 'none'
                cardsPlaceEnemy.appendChild(enemyCards[i])
                break
             }
