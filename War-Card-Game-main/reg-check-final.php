@@ -32,7 +32,7 @@
             $result->execute([':id' => $_COOKIE['id']]);
             $sql = 'INSERT INTO statisticswithplayer (:id) VALUES (:id)';
             $result = $connect->prepare($sql);
-            $result->execute([':id' => $_COOKIE['id']])
+            $result->execute([':id' => $_COOKIE['id']]);
             echo '<script type="text/javascript">location.replace("./mainmenu.php");</script>';
          }
          // $result = $connect->execute($sql);
