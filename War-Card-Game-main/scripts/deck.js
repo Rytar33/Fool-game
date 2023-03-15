@@ -60,6 +60,22 @@ class Card {
     cardDiv.innerText = this.suit
     cardDiv.classList.add("card", "hidden", "enemy__team", this.color)
     cardDiv.dataset.value = `${this.value} ${this.suit}`
+      fetch('status.json')
+      .then( response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then( json => initialize(json) )
+    function initialize(data){
+      for (let i = 0; i < data.length; i++) {
+        if(data[i].isChoise == true) {
+          cardDiv.style.backgroundImage = "url('"+ data[i].url +"')"
+          break
+        }
+      }
+    }
     return cardDiv
   }
   getHTML() {
